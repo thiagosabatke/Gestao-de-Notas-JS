@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestão de notas</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Gestão de notas</h1>
+    </header>
+    <main>
+      <section class="informaçoes_dos_alunos">
+        <h2>Informaçoes do aluno</h2>
+        <p>Nome: <input type="text" name="nometxt" id="input_nome" /></p>
+        <p>E-mail: <input type="email" name="emailtxt" id="input_email" /></p>
+        <p>RA: <input type="number" name="ratxt" id="input_ra" /></p>
+        <button>adicionar</button>
+      </section>
+      <section>
+        <h2>Cadastrar Notas 1º bimestre</h2>
+        <p>
+          Nota da prova: <input type="number" name="provaTxt" id="input_nota_prova_1bim" />
+        </p>
+        <p>
+          Nota da AEP: <input type="number" name="aepTxt" id="input_nota_aep_1bim" />
+        </p>
+        <p>
+          Nota da prova integrada: <input type="number" name="integradaTxt" id="input_nota_integrada_1bim" />
+        </p>
+        <p>
+            Média 1º bimestre: <input type="text" name="media_1bim" id="input_media_1bim">
+        </p>
+      </section>
+      <section>
+        <h2>Cadastrar Notas 2º bimestre</h2>
+        <p>
+          Nota da prova: <input type="number" name="provaTxt" id="input_nota_prova_2bim" />
+        </p>
+        <p>
+          Nota da AEP: <input type="number" name="aepTxt" id="input_nota_aep_2bim" />
+        </p>
+        <p>
+          Nota da prova integrada: <input type="number" name="integradaTxt" id="input_nota_integrada_2bim" />
+        </p>
+        <p>
+            Média 2º bimestre: <input type="text" name="media_1bim" id="input_media_2bim">
+        </p>
+      </section>
+      <section>
+        <h2>Tabela do aluno</h2>
+        <table border="1px">
+            <tr>
+                <td>Nome</td>
+                <td>Prova 1ºbim</td>
+                <td>AEP 1ºbim</td>
+                <td>Integrada 1ºbim</td>
+                <td>Media 1ºbim</td>
+                <td>Prova 2ºbim</td>
+                <td>AEP 2ºbim</td>
+                <td>Integrada 2ºbim</td>
+                <td>Situação do aluno</td>
+                <td>Ações</td>
+            </tr>
+        </table>
+      </section>
+      <section>
+        <p>Situação do aluno:</p>
+      </section>
+    </main>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
