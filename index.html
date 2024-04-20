@@ -12,11 +12,13 @@
     </header>
     <main>
       <section class="informaçoes_dos_alunos">
-        <h2>Informaçoes do aluno</h2>
-        <p>Nome: <input type="text" name="nometxt" id="input_nome" /></p>
-        <p>E-mail: <input type="email" name="emailtxt" id="input_email" /></p>
-        <p>RA: <input type="number" name="ratxt" id="input_ra" /></p>
-        <button>adicionar</button>
+        <form id="Formulario">
+          <h2>Informaçoes do aluno</h2>
+          Nome: <input type="text" name="nometxt" id="input_nome" required/>
+          E-mail: <input type="email" name="emailtxt" id="input_email" required/>
+          RA: <input type="number" name="ratxt" id="input_ra" required/>
+          <button onclick="Adicionar_informaçoes()">adicionar</button>
+        </form>
       </section>
       <section>
         <h2>Cadastrar Notas 1º bimestre</h2>
@@ -29,6 +31,7 @@
         <p>
           Nota da prova integrada: <input type="number" name="integradaTxt" id="input_nota_integrada_1bim" />
         </p>
+        <button onclick="Calcular_Media_1bim()">Calcular</button>
         <p>
             Média 1º bimestre: <input type="text" name="media_1bim" id="input_media_1bim">
         </p>
@@ -44,6 +47,7 @@
         <p>
           Nota da prova integrada: <input type="number" name="integradaTxt" id="input_nota_integrada_2bim" />
         </p>
+        <button onclick="Calcular_media_2bim()">Calcular</button>
         <p>
             Média 2º bimestre: <input type="text" name="media_1bim" id="input_media_2bim">
         </p>
