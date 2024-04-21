@@ -11,46 +11,38 @@
       <h1>Gestão de notas</h1>
     </header>
     <main>
-      <section class="informaçoes_dos_alunos">
-        <form id="Formulario">
-          <h2>Informaçoes do aluno</h2>
-          Nome: <input type="text" name="nometxt" id="input_nome" required/>
-          E-mail: <input type="email" name="emailtxt" id="input_email" required/>
-          RA: <input type="number" name="ratxt" id="input_ra" required/>
-          <button onclick="Adicionar_informaçoes()">adicionar</button>
-        </form>
-      </section>
       <section>
         <h2>Cadastrar Notas 1º bimestre</h2>
-        <p>
-          Nota da prova: <input type="number" name="provaTxt" id="input_nota_prova_1bim" />
-        </p>
-        <p>
-          Nota da AEP: <input type="number" name="aepTxt" id="input_nota_aep_1bim" />
-        </p>
-        <p>
-          Nota da prova integrada: <input type="number" name="integradaTxt" id="input_nota_integrada_1bim" />
-        </p>
-        <button onclick="Calcular_Media_1bim()">Calcular</button>
-        <p>
-            Média 1º bimestre: <input type="text" name="media_1bim" id="input_media_1bim">
-        </p>
-      </section>
-      <section>
-        <h2>Cadastrar Notas 2º bimestre</h2>
-        <p>
-          Nota da prova: <input type="number" name="provaTxt" id="input_nota_prova_2bim" />
-        </p>
-        <p>
-          Nota da AEP: <input type="number" name="aepTxt" id="input_nota_aep_2bim" />
-        </p>
-        <p>
-          Nota da prova integrada: <input type="number" name="integradaTxt" id="input_nota_integrada_2bim" />
-        </p>
-        <button onclick="Calcular_media_2bim()">Calcular</button>
-        <p>
-            Média 2º bimestre: <input type="text" name="media_1bim" id="input_media_2bim">
-        </p>
+          <form action="">
+            <label>
+              Nome: <input type="text" name="nometxt" id="input_nome" required>
+            </label>
+            <label>
+              RA: <input type="number" name="ratxt" id="input_ra" required>
+            </label>
+            <label>
+              E-mail: <input type="email" name="emailtxt" id="input_email" required>
+            </label>
+            <label>
+              Prova 1º bimestre: <input type="number" name="prova1txt" id="input_prova_1" required>
+            </label>
+            <label>
+              rova integrada 1º bimestre <input type="number" name="integrada1txt" id="input_prova_integrada_1" required>
+            </label>
+            <label>
+              AEP 1º bimestre: <input type="number" name="aep1txt" id="input_aep_1" required>
+            </label>
+            <label>
+              Prova 2º bimestre: <input type="number" name="prova2txt" id="input_prova_2" required>
+            </label>
+            <label>
+              Prova integrada 2º bimestre <input type="number" name="integrada2txt" id="input_prova_integrada_2" required>
+            </label>
+            <label>
+              AEP 2º bimestre: <input type="number" name="aep2txt" id="input_aep_2" required>
+            </label>
+            <button onclick="adicionaDadosAlunos()">Adicionar Dados</button>
+          </form>
       </section>
       <section>
         <h2>Tabela do aluno</h2>
