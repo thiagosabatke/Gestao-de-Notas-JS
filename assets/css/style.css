@@ -1,10 +1,9 @@
 label {
-    display: flex;
     margin-top: 15px;
 }
 
 label input {
-    margin-left: 15px;
+    margin-top: 10px;
 }
 
 body {
@@ -20,13 +19,13 @@ header {
 
 h1 {
     color: #006492;
+    margin-bottom: 10px;
 }
 
 section {
     margin-bottom: 30px;
-    
-}
 
+}
 
 h2 {
     margin-bottom: 10px;
@@ -41,16 +40,20 @@ input[type="email"] {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 80%;
 }
 
 button {
     padding: 16px 32px;
-    background-color: #81ff85;
-    color: #000000;
-    border: none;
+    background-color: #027db6;
+    color: #FFFFFF;
+    border: 2px solid black;
     border-radius: 4px;
     cursor: pointer;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: #25b92c;
 }
 
 
