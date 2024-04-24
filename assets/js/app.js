@@ -25,6 +25,9 @@ function adicionaDadosAlunos() {
     let botao_editar = document.createElement("button");
     botao_editar.id = "botao_editar_" + tamanho_tabela;
     botao_editar.innerText = "Editar";
+    botao_editar.style.padding = "15px 20px";
+    botao_editar.style.margin = "10px 10px 10px 60px";
+    botao_editar.style.backgroundColor = "blue";
     botao_editar.onclick = function () {
         editarDados(linha);
     };
@@ -32,6 +35,9 @@ function adicionaDadosAlunos() {
     let botao_deletar = document.createElement("button");
     botao_deletar.id = "botao_deletar_" + tamanho_tabela;
     botao_deletar.innerText = "Deletar";
+    botao_deletar.style.padding = "15px 20px";
+    botao_deletar.style.margin = "10px 10px 10px 10px";
+    botao_deletar.style.backgroundColor = "red";
     botao_deletar.onclick = function () {
         deletarDados(linha)
     };
