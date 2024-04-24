@@ -26,7 +26,7 @@ function adicionaDadosAlunos() {
     botao_editar.id = "botao_editar_" + tamanho_tabela;
     botao_editar.innerText = "Editar";
     botao_editar.style.padding = "15px 20px";
-    botao_editar.style.margin = "10px 10px 10px 60px";
+    botao_editar.style.margin = "10px 10px 10px 140px";
     botao_editar.style.backgroundColor = "blue";
     botao_editar.onclick = function () {
         editarDados(linha);

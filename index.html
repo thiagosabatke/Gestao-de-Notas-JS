@@ -9,42 +9,44 @@
   <body>
     <header>
       <h1>Gestão de notas</h1>
+      <hr>
     </header>
     <main>
-      <section>
+      <section id="section1">
         <h2>Cadastrar Notas</h2>
           <form >
             <label>
-              Nome: <input type="text" name="nometxt" id="input_nome" required>
+              Nome: <input type="text" name="nometxt" id="input_nome" placeholder="............................" required>
             </label>
             <label>
-              RA: <input type="number" name="ratxt" id="input_ra" required>
+              RA: <input type="number" name="ratxt" id="input_ra" placeholder="............................" required>
             </label>
             <label>
-              E-mail: <input type="email" name="emailtxt" id="input_email" required>
+              E-mail: <input type="email" name="emailtxt" id="input_email" placeholder="............................" required>
             </label>
             <label>
-              Prova 1º bimestre: <input type="number" name="prova1txt" id="input_prova_1" required>
+              Prova 1º bimestre: <input type="number" name="prova1txt" id="input_prova_1" placeholder="............................" required>
             </label>
             <label>
-              Prova integrada 1º bimestre <input type="number" name="integrada1txt" id="input_prova_integrada_1" required>
+              Prova integrada 1º bimestre <input type="number" name="integrada1txt" id="input_prova_integrada_1" placeholder="............................" required>
             </label>
             <label>
-              AEP 1º bimestre: <input type="number" name="aep1txt" id="input_aep_1" required>
+              AEP 1º bimestre: <input type="number" name="aep1txt" id="input_aep_1" placeholder="............................" required>
             </label>
             <label>
-              Prova 2º bimestre: <input type="number" name="prova2txt" id="input_prova_2" required>
+              Prova 2º bimestre: <input type="number" name="prova2txt" id="input_prova_2" placeholder="............................" required>
             </label>
             <label>
-              Prova integrada 2º bimestre <input type="number" name="integrada2txt" id="input_prova_integrada_2" required>
+              Prova integrada 2º bimestre <input type="number" name="integrada2txt" id="input_prova_integrada_2" placeholder="............................" required>
             </label>
             <label>
-              AEP 2º bimestre: <input type="number" name="aep2txt" id="input_aep_2" required>
+              AEP 2º bimestre: <input type="number" name="aep2txt" id="input_aep_2" placeholder="............................" required>
             </label>
-            <button type="submit" onclick="adicionaDadosAlunos()">Adicionar Dados</button>
+            <button type="submit" id="buttonAdd" onclick="adicionaDadosAlunos()">Adicionar Dados</button>
           </form>
       </section>
-      <section>
+      <section id="section2">
+        <hr>
         <h2>Tabela do aluno</h2>
         <table id="tabela" border="1px">
             <tr>
@@ -63,8 +65,8 @@
             </tr>
         </table>
       </section>
-      <section>
-        <p>Situação do aluno:</p>
+      <section id="section3">
+        <p>Situação do aluno</p>
       </section>
     </main>
     <script src="assets/js/app.js"></script>

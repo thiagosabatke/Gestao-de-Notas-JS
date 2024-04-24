@@ -19,17 +19,37 @@ header {
 
 h1 {
     color: #006492;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    margin-top: 0px;
 }
 
 section {
     margin-bottom: 30px;
+    margin-top: 0px;
+}
 
+#section1 {
+    margin-bottom: 30px;
+    margin-top: 0px;
+    height: 80vh;
+}
+
+#section2 {
+    margin-bottom: 30px;
+    margin-top: 0px;
+    height: 30vh;
+}
+
+#section3 {
+    margin-bottom: 30px;
+    margin-top: 0px;
+    height: 20vh;
 }
 
 h2 {
     margin-bottom: 10px;
     color: #006492;
+    text-decoration: underline;
 }
 
 input[type="text"],
@@ -40,6 +60,16 @@ input[type="email"] {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+p {
+    font-size: medium;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #027db6;
+    padding: 10px;
+    color: #FFFFFF;
+    border: 2px solid black;
 }
 
 button {
@@ -56,11 +86,14 @@ button:hover {
     background-color: #25b92c;
 }
 
-#bota_editar {
-    background-color: red;
+#buttonAdd {
+    margin-top: 20px;
 }
 
 table {
+    margin-top: 20px;
     width: 99%;
     border-collapse: bold;
+    border: solid;
+    color: black;
 }
