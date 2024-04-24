@@ -13,7 +13,7 @@
     <main>
       <section>
         <h2>Cadastrar Notas</h2>
-          <form action="">
+          <form >
             <label>
               Nome: <input type="text" name="nometxt" id="input_nome" required>
             </label>
@@ -41,23 +41,25 @@
             <label>
               AEP 2º bimestre: <input type="number" name="aep2txt" id="input_aep_2" required>
             </label>
-            <button onclick="adicionaDadosAlunos()">Adicionar Dados</button>
+            <button type="submit" onclick="adicionaDadosAlunos()">Adicionar Dados</button>
           </form>
       </section>
       <section>
         <h2>Tabela do aluno</h2>
-        <table border="1px">
+        <table id="tabela" border="1px">
             <tr>
+                <td>Código</td>
                 <td>Nome</td>
                 <td>Prova 1ºbim</td>
                 <td>AEP 1ºbim</td>
                 <td>Integrada 1ºbim</td>
-                <td>Media 1ºbim</td>
                 <td>Prova 2ºbim</td>
                 <td>AEP 2ºbim</td>
                 <td>Integrada 2ºbim</td>
-                <td>Situação do aluno</td>
-                <td>Ações</td>
+                <td>Média 1ºbim</td>
+                <td>Média 2ºbim</td>
+                <td>Média total</td>
+                <td colspan="2">Ações</td>
             </tr>
         </table>
       </section>
