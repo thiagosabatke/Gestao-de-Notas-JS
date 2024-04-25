@@ -1,7 +1,6 @@
 'use strict'
 function adicionaDadosAlunos() {
     
-
     let nome = document.getElementById('input_nome').value;
     let ra = document.getElementById('input_ra').value;
     let email = document.getElementById('input_email').value;

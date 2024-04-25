@@ -132,3 +132,9 @@ footer {
     top: 20px;
     height: 10vh;
 }
+
+#tabela tr td {
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+}
