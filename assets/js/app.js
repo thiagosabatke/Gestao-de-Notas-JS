@@ -1,5 +1,4 @@
-
-
+'use strict'
 function adicionaDadosAlunos() {
     
 
@@ -13,6 +12,12 @@ function adicionaDadosAlunos() {
     let aep2 = parseFloat(document.getElementById('input_aep_2').value);
     let integrada2 = parseFloat(document.getElementById('input_prova_integrada_2').value);
     
+    if ((prova1 < 0 || prova1 > 8) || (prova2 < 0 || prova2 > 8) ||
+        (aep1 < 0 || aep1 > 1) || (aep2 < 0 || aep2 > 1) ||
+        (integrada1 < 0 || integrada1 > 1) || (integrada2 < 0 || integrada2 > 1)) {
+        alert("Por favor, verifique se as notas estão dentro dos limites permitidos.");
+        return false;
+    }
 
     let media1 = (prova1 * 0.8) + (aep1 * 0.1) + (integrada1 * 0.1);
     let media2 = (prova2 * 0.8) + (aep2 * 0.1) + (integrada2 * 0.1);
@@ -70,8 +75,52 @@ function adicionaDadosAlunos() {
 }
 
 function editarDados(linha) {
-    let id = linha.id;
-    window.alert('Editando linha ' + id);
+    let modal = document.getElementById('editar_modal');
+    modal.style.display = 'block';
+
+    let cells = linha.cells;
+    document.getElementById('input_nome_edit').value = cells[1].innerHTML;
+    document.getElementById('input_prova_1_edit').value = cells[2].innerHTML;
+    document.getElementById('input_aep_1_edit').value = cells[3].innerHTML;
+    document.getElementById('input_prova_integrada_1_edit').value = cells[4].innerHTML;
+    document.getElementById('input_prova_2_edit').value = cells[5].innerHTML;
+    document.getElementById('input_aep_2_edit').value = cells[6].innerHTML;
+    document.getElementById('input_prova_integrada_2_edit').value = cells[7].innerHTML;
+    
+    document.getElementById('editar_formulario').onsubmit = function(event) {
+        event.preventDefault(); 
+
+        cells[1].innerHTML = document.getElementById('input_nome_edit').value;
+        cells[2].innerHTML = document.getElementById('input_prova_1_edit').value;
+        cells[3].innerHTML = document.getElementById('input_aep_1_edit').value;
+        cells[4].innerHTML = document.getElementById('input_prova_integrada_1_edit').value;
+        cells[5].innerHTML = document.getElementById('input_prova_2_edit').value;
+        cells[6].innerHTML = document.getElementById('input_aep_2_edit').value;
+        cells[7].innerHTML = document.getElementById('input_prova_integrada_2_edit').value;
+
+
+        let prova1 = parseFloat(cells[2].innerHTML);
+        let aep1 = parseFloat(cells[3].innerHTML);
+        let integrada1 = parseFloat(cells[4].innerHTML);
+        let prova2 = parseFloat(cells[5].innerHTML);
+        let aep2 = parseFloat(cells[6].innerHTML);
+        let integrada2 = parseFloat(cells[7].innerHTML);
+        
+        let media1 = (prova1 * 0.8) + (aep1 * 0.1) + (integrada1 * 0.1);
+        let media2 = (prova2 * 0.8) + (aep2 * 0.1) + (integrada2 * 0.1);
+        let mediaTotal = (media1 + media2) / 2;
+        
+        cells[8].innerHTML = media1.toFixed(1);
+        cells[9].innerHTML = media2.toFixed(1);
+        cells[10].innerHTML = mediaTotal.toFixed(1);
+
+        fecharModal();
+    };
+}
+
+function fecharModal() {
+    let modal = document.getElementById('editar_modal');
+    modal.style.display = 'none';
 }
 
 function deletarDados(linha) {

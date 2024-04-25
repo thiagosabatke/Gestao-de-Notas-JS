@@ -65,10 +65,40 @@
             </tr>
         </table>
       </section>
-      <section id="section3">
-        <p>Situação do aluno</p>
+      <section id="editar_modal" class="modal">
+        <div class="conteudo_do_modal">
+              <span class="fechar" onclick="fecharModal()">&times;</span>
+              <h2>Editar Informações do Aluno</h2>
+              <form id="editar_formulario">
+                  <label>
+                      Nome: <input type="text" name="nometxt" id="input_nome_edit" placeholder="............................" required>
+                  </label>
+                  <label>
+                      Prova 1º bimestre: <input type="number" name="prova1txt" id="input_prova_1_edit" placeholder="............................" required min="0" max="8">
+                  </label>
+                  <label>
+                      AEP 1º bimestre: <input type="number" name="aep1txt" id="input_aep_1_edit" placeholder="............................" required min="0" max="1">
+                  </label>
+                  <label>
+                      Prova integrada 1º bimestre: <input type="number" name="integrada1txt" id="input_prova_integrada_1_edit" placeholder="............................" required min="0" max="1">
+                  </label>
+                  <label>
+                      Prova 2º bimestre: <input type="number" name="prova2txt" id="input_prova_2_edit" placeholder="............................" required min="0" max="8">
+                  </label>
+                  <label>
+                      AEP 2º bimestre: <input type="number" name="aep2txt" id="input_aep_2_edit" placeholder="............................" required min="0" max="1">
+                  </label>
+                  <label>
+                      Prova integrada 2º bimestre: <input type="number" name="integrada2txt" id="input_prova_integrada_2_edit" placeholder="............................" required min="0" max="1">
+                  </label>
+                  <button type="submit">Salvar Alterações</button>
+              </form>
+          </div>
       </section>
     </main>
+    <footer id="rodape">
+      <p>Situação do aluno:</p>
+    </footer>
     <script src="assets/js/app.js"></script>
   </body>
 </html>
