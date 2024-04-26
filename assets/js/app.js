@@ -62,6 +62,14 @@ function adicionaDadosAlunos() {
     celula_botoes.appendChild(botao_editar);
     celula_botoes.appendChild(botao_deletar);
 
+    salvarDadosLocalStorage();
+
+    limparDados();
+
+    return false;
+}
+
+function limparDados(){
     document.getElementById('input_nome').value = "";
     document.getElementById('input_prova_1').value = "";
     document.getElementById('input_aep_1').value = "";
@@ -69,8 +77,84 @@ function adicionaDadosAlunos() {
     document.getElementById('input_prova_2').value = "";
     document.getElementById('input_aep_2').value = "";
     document.getElementById('input_prova_integrada_2').value = "";
+}
 
-    return false;
+function salvarDadosLocalStorage(){
+    let tabela = document.getElementById('tabela');
+    let dados = [];
+
+    // Itera sobre as linhas da tabela, exceto a primeira que contém os cabeçalhos
+    for (let i = 1; i < tabela.rows.length; i++) {
+        let linha = tabela.rows[i];
+        let aluno = {
+            "nome": linha.cells[1].innerHTML,
+            "prova1": linha.cells[2].innerHTML,
+            "aep1": linha.cells[3].innerHTML,
+            "integrada1": linha.cells[4].innerHTML,
+            "prova2": linha.cells[5].innerHTML,
+            "aep2": linha.cells[6].innerHTML,
+            "integrada2": linha.cells[7].innerHTML,
+            "media1": linha.cells[8].innerHTML,
+            "media2": linha.cells[9].innerHTML,
+            "mediaTotal": linha.cells[10].innerHTML
+        };
+        dados.push(aluno);
+    }
+
+    // Converte os dados para JSON e os armazena no localStorage
+    localStorage.setItem("dados_alunos", JSON.stringify(dados));
+
+}
+
+function carregarDadosLocalStorage() {
+    let dados = localStorage.getItem("dados_alunos");
+
+    if (dados !== null) {
+        dados = JSON.parse(dados);
+
+        for (let aluno of dados) {
+            let tabela = document.getElementById('tabela');
+            let tamanho_tabela = tabela.rows.length;
+            let linha = tabela.insertRow(tamanho_tabela);
+
+            linha.id = "linha_" + tamanho_tabela;
+            linha.insertCell(0).innerHTML = tamanho_tabela;
+            linha.insertCell(1).innerHTML = aluno.nome;
+            linha.insertCell(2).innerHTML = aluno.prova1;
+            linha.insertCell(3).innerHTML = aluno.aep1;
+            linha.insertCell(4).innerHTML = aluno.integrada1;
+            linha.insertCell(5).innerHTML = aluno.prova2;
+            linha.insertCell(6).innerHTML = aluno.aep2;
+            linha.insertCell(7).innerHTML = aluno.integrada2;
+            linha.insertCell(8).innerHTML = aluno.media1;
+            linha.insertCell(9).innerHTML = aluno.media2;
+            linha.insertCell(10).innerHTML = aluno.mediaTotal;
+
+            let celula_botoes = linha.insertCell(11);
+            let botao_editar = document.createElement("button");
+            botao_editar.id = "botao_editar_" + tamanho_tabela;
+            botao_editar.innerText = "Editar";
+            botao_editar.style.padding = "15px 20px";
+            botao_editar.style.margin = "10px 10px 10px 140px";
+            botao_editar.style.backgroundColor = "blue";
+            botao_editar.onclick = function () {
+                editarDados(linha);
+            };
+
+            let botao_deletar = document.createElement("button");
+            botao_deletar.id = "botao_deletar_" + tamanho_tabela;
+            botao_deletar.innerText = "Deletar";
+            botao_deletar.style.padding = "15px 20px";
+            botao_deletar.style.margin = "10px 10px 10px 10px";
+            botao_deletar.style.backgroundColor = "red";
+            botao_deletar.onclick = function () {
+                deletarDados(linha);
+            };
+
+            celula_botoes.appendChild(botao_editar);
+            celula_botoes.appendChild(botao_deletar);
+        }
+    }
 }
 
 function editarDados(linha) {
@@ -113,6 +197,7 @@ function editarDados(linha) {
         cells[9].innerHTML = media2.toFixed(1);
         cells[10].innerHTML = mediaTotal.toFixed(1);
 
+        salvarDadosLocalStorage();
         fecharModal();
     };
 }
@@ -124,11 +209,12 @@ function fecharModal() {
 
 function deletarDados(linha) {
     linha.parentNode.removeChild(linha);
+    salvarDadosLocalStorage();
     return false;
 }
 
 
-function Validar(mediaTotal){
-    
-}
 
+window.onload = function () {
+    carregarDadosLocalStorage();
+};
