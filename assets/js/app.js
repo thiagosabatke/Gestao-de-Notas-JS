@@ -1,6 +1,6 @@
-'use strict'
-function adicionaDadosAlunos() {
+'use strict';
 
+function adicionaDadosAlunos() {
     let nome = document.getElementById('input_nome').value;
     let ra = document.getElementById('input_ra').value;
     let email = document.getElementById('input_email').value;
@@ -17,34 +17,30 @@ function adicionaDadosAlunos() {
         return false;
     }
 
+    if ((prova1 < 0 || prova1 > 8) || (prova2 < 0 || prova2 > 8) ||
+    (aep1 < 0 || aep1 > 1) || (aep2 < 0 || aep2 > 1) ||
+    (integrada1 < 0 || integrada1 > 1) || (integrada2 < 0 || integrada2 > 1) ||
+    nome == '') {
+    alert("verifique as notas inseridas. As notas de prova devem estar entre 0 e 8, enquanto as notas de AEP e integrada devem estar entre 0 e 1.");
+    return false;
+}
+
     let media1 = (prova1 * 0.8) + (aep1 * 0.1) + (integrada1 * 0.1);
     let media2 = (prova2 * 0.8) + (aep2 * 0.1) + (integrada2 * 0.1);
     let mediaTotal = (media1 + media2) / 2;
 
+    let situacao;
+    if (mediaTotal >= 6) {
+        situacao = "Aprovado";
+    } else if (mediaTotal >= 3) {
+        situacao = "Recuperação";
+    } else {
+        situacao = "Reprovado";
+    }
+
     let tabela = document.getElementById('tabela');
     let tamanho_tabela = tabela.rows.length;
     let linha = tabela.insertRow(tamanho_tabela);
-
-    let botao_editar = document.createElement("button");
-    botao_editar.id = "botao_editar_" + tamanho_tabela;
-    botao_editar.innerText = "Editar";
-    botao_editar.style.padding = "15px 20px";
-    botao_editar.style.margin = "10px 10px 10px 140px";
-    botao_editar.style.backgroundColor = "blue";
-    botao_editar.onclick = function () {
-        editarDados(linha);
-    };
-
-    let botao_deletar = document.createElement("button");
-    botao_deletar.id = "botao_deletar_" + tamanho_tabela;
-    botao_deletar.innerText = "Deletar";
-    botao_deletar.style.padding = "15px 20px";
-    botao_deletar.style.margin = "10px 10px 10px 10px";
-    botao_deletar.style.backgroundColor = "red";
-    botao_deletar.onclick = function () {
-        deletarDados(linha)
-    };
-
 
     linha.id = "linha_" + tamanho_tabela;
     linha.insertCell(0).innerHTML = tamanho_tabela;
@@ -58,7 +54,27 @@ function adicionaDadosAlunos() {
     linha.insertCell(8).innerHTML = media1.toFixed(1);
     linha.insertCell(9).innerHTML = media2.toFixed(1);
     linha.insertCell(10).innerHTML = mediaTotal.toFixed(1);
-    let celula_botoes = linha.insertCell(11);
+    linha.insertCell(11).innerHTML = situacao;
+
+    let celula_botoes = linha.insertCell(12);
+    let botao_editar = document.createElement("button");
+    botao_editar.id = "botao_editar_" + tamanho_tabela;
+    botao_editar.innerText = "Editar";
+    botao_editar.classList.add("botao");
+    botao_editar.classList.add("editar");
+    botao_editar.onclick = function () {
+        editarDados(linha);
+    };
+    
+    let botao_deletar = document.createElement("button");
+    botao_deletar.id = "botao_deletar_" + tamanho_tabela;
+    botao_deletar.innerText = "Deletar";
+    botao_deletar.classList.add("botao");
+    botao_deletar.classList.add("deletar");
+    botao_deletar.onclick = function () {
+        deletarDados(linha)
+    };
+
     celula_botoes.appendChild(botao_editar);
     celula_botoes.appendChild(botao_deletar);
 
@@ -83,7 +99,6 @@ function salvarDadosLocalStorage(){
     let tabela = document.getElementById('tabela');
     let dados = [];
 
-    // Itera sobre as linhas da tabela, exceto a primeira que contém os cabeçalhos
     for (let i = 1; i < tabela.rows.length; i++) {
         let linha = tabela.rows[i];
         let aluno = {
@@ -96,14 +111,13 @@ function salvarDadosLocalStorage(){
             "integrada2": linha.cells[7].innerHTML,
             "media1": linha.cells[8].innerHTML,
             "media2": linha.cells[9].innerHTML,
-            "mediaTotal": linha.cells[10].innerHTML
+            "mediaTotal": linha.cells[10].innerHTML,
+            "situacao": linha.cells[11].innerHTML
         };
         dados.push(aluno);
     }
 
-    // Converte os dados para JSON e os armazena no localStorage
     localStorage.setItem("dados_alunos", JSON.stringify(dados));
-
 }
 
 function carregarDadosLocalStorage() {
@@ -129,26 +143,25 @@ function carregarDadosLocalStorage() {
             linha.insertCell(8).innerHTML = aluno.media1;
             linha.insertCell(9).innerHTML = aluno.media2;
             linha.insertCell(10).innerHTML = aluno.mediaTotal;
+            linha.insertCell(11).innerHTML = aluno.situacao;
 
-            let celula_botoes = linha.insertCell(11);
+            let celula_botoes = linha.insertCell(12);
             let botao_editar = document.createElement("button");
             botao_editar.id = "botao_editar_" + tamanho_tabela;
             botao_editar.innerText = "Editar";
-            botao_editar.style.padding = "15px 20px";
-            botao_editar.style.margin = "10px 10px 10px 140px";
-            botao_editar.style.backgroundColor = "blue";
+            botao_editar.classList.add("botao");
+            botao_editar.classList.add("editar");
             botao_editar.onclick = function () {
                 editarDados(linha);
             };
-
+            
             let botao_deletar = document.createElement("button");
             botao_deletar.id = "botao_deletar_" + tamanho_tabela;
             botao_deletar.innerText = "Deletar";
-            botao_deletar.style.padding = "15px 20px";
-            botao_deletar.style.margin = "10px 10px 10px 10px";
-            botao_deletar.style.backgroundColor = "red";
+            botao_deletar.classList.add("botao");
+            botao_deletar.classList.add("deletar");
             botao_deletar.onclick = function () {
-                deletarDados(linha);
+                deletarDados(linha)
             };
 
             celula_botoes.appendChild(botao_editar);
@@ -170,51 +183,66 @@ function editarDados(linha) {
     document.getElementById('input_aep_2_edit').value = cells[6].innerHTML;
     document.getElementById('input_prova_integrada_2_edit').value = cells[7].innerHTML;
 
-    document.getElementById('editar_formulario').onsubmit = function (event) {
-        event.preventDefault();
+    document.getElementById('editar_formulario').onsubmit = function() {
+        let nome = document.getElementById('input_nome_edit').value;
+        let prova1 = parseFloat(document.getElementById('input_prova_1_edit').value);
+        let aep1 = parseFloat(document.getElementById('input_aep_1_edit').value);
+        let integrada1 = parseFloat(document.getElementById('input_prova_integrada_1_edit').value);
+        let prova2 = parseFloat(document.getElementById('input_prova_2_edit').value);
+        let aep2 = parseFloat(document.getElementById('input_aep_2_edit').value);
+        let integrada2 = parseFloat(document.getElementById('input_prova_integrada_2_edit').value);
 
-        cells[1].innerHTML = document.getElementById('input_nome_edit').value;
-        cells[2].innerHTML = document.getElementById('input_prova_1_edit').value;
-        cells[3].innerHTML = document.getElementById('input_aep_1_edit').value;
-        cells[4].innerHTML = document.getElementById('input_prova_integrada_1_edit').value;
-        cells[5].innerHTML = document.getElementById('input_prova_2_edit').value;
-        cells[6].innerHTML = document.getElementById('input_aep_2_edit').value;
-        cells[7].innerHTML = document.getElementById('input_prova_integrada_2_edit').value;
-
-
-        let prova1 = parseFloat(cells[2].innerHTML);
-        let aep1 = parseFloat(cells[3].innerHTML);
-        let integrada1 = parseFloat(cells[4].innerHTML);
-        let prova2 = parseFloat(cells[5].innerHTML);
-        let aep2 = parseFloat(cells[6].innerHTML);
-        let integrada2 = parseFloat(cells[7].innerHTML);
+        if ((isNaN(prova1)) || (isNaN(prova2)) ||
+            (isNaN(aep1)) || (isNaN(aep2)) ||
+            (isNaN(integrada1)) || (isNaN(integrada2)) || nome == '') {
+            return false;
+        }
 
         let media1 = (prova1 * 0.8) + (aep1 * 0.1) + (integrada1 * 0.1);
         let media2 = (prova2 * 0.8) + (aep2 * 0.1) + (integrada2 * 0.1);
         let mediaTotal = (media1 + media2) / 2;
 
+        let situacao;
+        if (mediaTotal >= 6) {
+            situacao = "Aprovado";
+        } else if (mediaTotal >= 3) {
+            situacao = "Recuperação";
+        } else {
+            situacao = "Reprovado";
+        }
+
+        cells[1].innerHTML = nome;
+        cells[2].innerHTML = prova1;
+        cells[3].innerHTML = aep1;
+        cells[4].innerHTML = integrada1;
+        cells[5].innerHTML = prova2;
+        cells[6].innerHTML = aep2;
+        cells[7].innerHTML = integrada2;
         cells[8].innerHTML = media1.toFixed(1);
         cells[9].innerHTML = media2.toFixed(1);
         cells[10].innerHTML = mediaTotal.toFixed(1);
+        cells[11].innerHTML = situacao;
 
         salvarDadosLocalStorage();
-        fecharModal();
+
+        modal.style.display = 'none';
+
+        return false;
     };
 }
 
 function fecharModal() {
-    let modal = document.getElementById('editar_modal');
-    modal.style.display = 'none';
+    document.getElementById('editar_modal').style.display = 'none';
 }
 
 function deletarDados(linha) {
-    linha.parentNode.removeChild(linha);
-    salvarDadosLocalStorage();
-    return false;
+        let index = linha.rowIndex;
+        let tabela = document.getElementById('tabela');
+        tabela.deleteRow(index);
+
+        salvarDadosLocalStorage();
 }
 
-
-
-window.onload = function () {
+window.onload = function() {
     carregarDadosLocalStorage();
 };
